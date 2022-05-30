@@ -1,8 +1,8 @@
 :root {
   --primary-text-color: #171717;
   --secondary-text-color: #262626;
-  --primary-bg-color: #FAFAFA;
-  --secondary-bg-color: #D4D4D8;
+  --primary-bg-color: #e5e5e5;
+  --secondary-bg-color: #ffffff;
   --font: 
     ui-sans-serif,
     -apple-system,
@@ -28,11 +28,6 @@
   color: var(--primary-text-color)
 }
 
-.menu-icon-container {
-  padding: 20px;
-  cursor: pointer;
-}
-
 .nav-header {
   display: flex;
   flex-wrap: nowrap;
@@ -43,6 +38,16 @@
   flex-grow: 1;
   text-align: center;
   padding-right: 50px;
+}
+
+body {
+  background-color: var(--primary-bg-color);
+  height: 100vh;
+}
+
+.to-do-list-app {
+  padding: 30px;
+  border: red 1px solid;
 }
 
 footer {
@@ -79,17 +84,38 @@ footer {
   display: flex;
 }
 
-.left-side-bar,
-.right-side-bar {
-  margin: 20px;
-}
-
 .left-side-bar {
-  width: 25%;
+  width: 20%;
   border: solid 1px red;
+  margin-right: 35px;
 }
 
 .right-side-bar {
-  width: 25%;
+  width: 40%;
   border: solid 1px red;
+  margin-right: 35px;
+}
+
+.header {
+  padding-bottom: 10px;
+}
+
+.header-bottom {
+  padding-top: 10px;
+}
+
+.task-info {
+  width: 40%;
+  border: green 1px solid;
+}
+
+.description-text-form {
+  border: black 1px solid;
+  width: 100%;
+}
+
+.description-text {
+  border: blue 1px solid;
+  width: 100%;
+  height: auto;
 }
