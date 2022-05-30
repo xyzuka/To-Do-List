@@ -12,6 +12,9 @@
   --black-text: #1C1917;
   --grey-text: #44403C;
   --checkbox-green: #66bb6a;
+  --high-priority: #DC2626;
+  --mid-priority: #EA580C;
+  --low-priority: #15803D;
   --font: 
     'Open Sans',
     ui-sans-serif,
@@ -112,51 +115,58 @@ footer {
   cursor: pointer;
 }
 
+.task-btn:hover,
+.set-goal-text:hover {
+  font-weight: bold;
+}
+
 .right-section {
   width: 75%;
 }
 
-.circle {
-  position: relative;
+input[type="checkbox"] {
+  display: none;
 }
 
-.circle label {
-  background-color: var(--main-white);
-  border: 1px solid var(--main-grey);
+label {
+  position: relative;
+  padding-left: 25px;
+  cursor: pointer;
+}
+
+label::before {
+  content: '';
+  background: url(/src/images/check-circle.svg);
+  background-position: center;
+  background-size: contain;
+  width: 27px;
+  height: 27px;
+  position: absolute;
+  left: -9px;
+  top: -2px;
+  cursor: pointer;
+
+  transform: scale(0) rotateZ(180deg);
+  transition: all 0.4s cubic-bezier(0.54, 0.01, 0, 1.49);
+}
+
+input[type="checkbox"]:checked+label::before {
+  transform: scale(1) rotateZ(0deg);
+}
+
+input[type=checkbox]:checked+label {
+  text-decoration: line-through;
+}
+
+label::after {
+  content: "";
+  border: 2px solid #27ae60;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  left: -8px;
   border-radius: 50%;
   cursor: pointer;
-  height: 20px;
-  left: 0;
-  position: absolute;
-  top: 0;
-  width: 20px;
-}
-
-.circle label:after {
-  border: 2px solid var(--main-white);
-  border-top: none;
-  border-right: none;
-  content: "";
-  height: 5px;
-  left: 5px;
-  opacity: 0;
-  position: absolute;
-  top: 5px;
-  transform: rotate(-45deg);
-  width: 7px;
-}
-
-.circle input[type="checkbox"] {
-  visibility: hidden;
-}
-
-.circle input[type="checkbox"]:checked+label {
-  background-color: var(--checkbox-green);
-  border-color: var(--checkbox-green);
-}
-
-.circle input[type="checkbox"]:checked+label:after {
-  opacity: 1;
 }
 
 .to-do-item {
@@ -179,6 +189,18 @@ footer {
 
 .to-do-task {
   padding-left: 20px;
+}
+
+.low-priority {
+  border-left: var(--low-priority) 5px solid;
+}
+
+.mid-priority {
+  border-left: var(--mid-priority) 5px solid;
+}
+
+.high-priority {
+  border-left: var(--high-priority) 5px solid;
 }
 
 
