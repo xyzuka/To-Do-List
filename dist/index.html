@@ -7,77 +7,72 @@
     <title>Momentum: To Do List App</title>
   <link rel="icon" href="favicon.png"><script defer src="main.js"></script></head>
   <body>
-    <div class="to-do-list-app">
-      <header class="nav-header">
-        <div class="time-of-day">
-          <p class="date">Monday, 30 May 2022</p>
-          <p class="time">12:00 pm</p>
+    <div class="to-do-app">
+      <div class="app-header">
+        <div class="app-header-title">
+          <h1>Momentum</h3>
+          <p>Seize the day</p>
         </div>
-        <h1 class="webapp-logo">Momentum</h1>
-        <svg class="day-night-toggle day" viewBox="0 0 24 24">
-          <path
-            fill="currentColor"
-            d="M3.55 19.09L4.96 20.5L6.76 18.71L5.34 17.29M12 6C8.69 6 6 8.69 6 12S8.69 18 12 18 18 15.31 18 12C18 8.68 15.31 6 12 6M20 13H23V11H20M17.24 18.71L19.04 20.5L20.45 19.09L18.66 17.29M20.45 5L19.04 3.6L17.24 5.39L18.66 6.81M13 1H11V4H13M6.76 5.39L4.96 3.6L3.55 5L5.34 6.81L6.76 5.39M1 13H4V11H1M13 20H11V23H13"
-          />
-        </svg>
-        <svg class="day-night-toggle night hide" viewBox="0 0 24 24">
-          <path
-            fill="currentColor"
-            d="M2 12A10 10 0 0 0 15 21.54A10 10 0 0 1 15 2.46A10 10 0 0 0 2 12Z"
-          />
-        </svg>
-      </header>
-      <div class="main-content">
-        <div class="left-side-bar">
-          <h3 class="header">Tasks</h3>
-          <ul>
-            All Tasks
-          </ul>
-          <ul>
-            Today
-          </ul>
-          <ul>
-            This week
-          </ul>
-          <ul>
-            Important
-          </ul>
-          <h3 class="header header-bottom">Goals</h3>
-          <ul>
-            Set a Goal
-          </ul>
+        <div class="time-container">
+          <p>12:00pm</p>
+          <p>Monday, 30 May 2022</p>
         </div>
-        <div class="right-side-bar">
-          <h3 class="header">All Tasks</h3>
-          <form action="#">
-            <input type="checkbox" id="task" name="task" value="task" />
-            <label for="task">Gym: Deadlift Testing</label><br />
-          </form>
-          <form action="#">
-            <input type="checkbox" id="task" name="task" value="task" />
-            <label for="task">Budget: Sort out monthly finances</label><br />
-          </form>
+      </div>
+      <div class="app-content">
+        <div class="left-section">
+          <div class="tasks-section">
+            <h2>Tasks</h2>
+            <ul>All Tasks</ul>
+            <ul>Today</ul>
+            <ul>This Week</ul>
+            <ul>Priority</ul>
+          </div>
+          <div class="goals-section">
+            <h2>Goals</h2>
+            <ul>Set a Goal</ul>
+          </div>
         </div>
-        <div class="task-info">
-          <h3 class="task-title-text">Gym: Deadlift Testing</h3>
-          <p class="priority-text">Priority: Low</p>
-          <p class="due-date-text"></p>
-          <form action="/action_page.php" class="description-text-form">
-            <label for="fname">Description:</label><br />
-            <textarea
-              name="text"
-              rows="14"
-              cols="10"
-              wrap="soft"
-              class="description-text"
-            >
-Will need to test my 1RM for next training cycle. Progress weight conservatively.</textarea
-            >
-          </form>
+        <div class="right-section">
+          <section class="to-do-item">
+            <div class="check-and-title">
+                <div class="circle">
+                  <input type="checkbox" checked id="checkbox" />
+                <label for="checkbox"></label>
+              </div>
+              <p class="to-do-task">Gym: Deadlift 1RM Testing</p>
+            </div>
+            <div class="to-do-options">
+            <p>1 June 2022</p>
+            <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+              <path fill="currentColor" d="M10 20H6V4H13V9H18V12.1L20 10.1V8L14 2H6C4.9 2 4 2.9 4 4V20C4 21.1 4.9 22 6 22H10V20M20.2 13C20.3 13 20.5 13.1 20.6 13.2L21.9 14.5C22.1 14.7 22.1 15.1 21.9 15.3L20.9 16.3L18.8 14.2L19.8 13.2C19.9 13.1 20 13 20.2 13M20.2 16.9L14.1 23H12V20.9L18.1 14.8L20.2 16.9Z" />
+            </svg>
+            <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+              <path fill="currentColor" d="M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19M8,9H16V19H8V9M15.5,4L14.5,3H9.5L8.5,4H5V6H19V4H15.5Z" />
+            </svg>
+            </div>  
+          </section>
+          <section class="to-do-item">
+            <div class="check-and-title">
+                <div class="circle">
+                  <input type="checkbox" checked id="checkbox" />
+                <label for="checkbox"></label>
+              </div>
+              <p class="to-do-task">Misc: Do Dishes</p>
+            </div>
+            <div class="to-do-options">
+            <p>2 June 2022</p>
+            <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+              <path fill="currentColor" d="M10 20H6V4H13V9H18V12.1L20 10.1V8L14 2H6C4.9 2 4 2.9 4 4V20C4 21.1 4.9 22 6 22H10V20M20.2 13C20.3 13 20.5 13.1 20.6 13.2L21.9 14.5C22.1 14.7 22.1 15.1 21.9 15.3L20.9 16.3L18.8 14.2L19.8 13.2C19.9 13.1 20 13 20.2 13M20.2 16.9L14.1 23H12V20.9L18.1 14.8L20.2 16.9Z" />
+            </svg>
+            <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+              <path fill="currentColor" d="M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19M8,9H16V19H8V9M15.5,4L14.5,3H9.5L8.5,4H5V6H19V4H15.5Z" />
+            </svg>
+            </div>  
+          </section>
+
         </div>
       </div>
     </div>
-
     <footer>
       <div>
         <a href="https://github.com/xyzuka/To-Do-List">xyzuka</a> © 2022
