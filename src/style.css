@@ -6,7 +6,7 @@
 :root {
   --bc-color: #545454;
   --main-red:#C40C00;
-  --main-grey: #A3A3A3;
+  --main-grey: #DFDFDF;
   --main-white: #FAFAFA;
   --white-text: white;
   --black-text: #1C1917;
@@ -94,6 +94,22 @@ footer {
 
 .goals-section {
   margin-top: 20px;
+}
+
+.main-header {
+  padding-bottom: 5px;
+}
+
+.set-goal-prompt {
+  display: flex;
+}
+
+.set-goal-text {
+  padding-left: 10px;
+}
+
+.button:hover {
+  cursor: pointer;
 }
 
 .right-section {
