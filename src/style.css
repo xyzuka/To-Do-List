@@ -322,6 +322,10 @@ label::after {
   border-radius: 5px;
 }
 
+.submit-goal {
+  width: 20%;
+}
+
 .submit-goal:hover {
   cursor: pointer;
 }
