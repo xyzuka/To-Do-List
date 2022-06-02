@@ -1,4 +1,4 @@
-import addNewGoal from './addNewGoal.js';
+import addNewGoal from './addDelGoals.js';
 
 const show_goal_modal = document.querySelector('.set-goal-prompt');
 const show_to_do_modal = document.querySelector('.add-to-do-button');

@@ -1,1 +1,1 @@
-export let goalListStorage = ['Coding', 'Fitness', 'Personal'];
+export let goalListStorage = ['Fitness', 'Coding', 'Personal'];
