@@ -1,3 +1,5 @@
+import addNewGoal from './addNewGoal.js';
+
 const show_goal_modal = document.querySelector('.set-goal-prompt');
 const show_to_do_modal = document.querySelector('.add-to-do-button');
 const modal = document.querySelector('.add-goal-modal');
@@ -37,17 +39,24 @@ export default function modalFeature() {
 
   document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape') {
+      e.preventDefault();
       closeModals();
     }
   });
 
-  add_goal_btn.addEventListener('click', closeModals);
+  add_goal_btn.addEventListener('click', (e) => {
+    e.preventDefault();
+    closeModals();
+    addNewGoal();
+  });
 
   add_to_do_btn.addEventListener('click', closeModals);
 
   document.addEventListener('keydown', function (e) {
     if (e.key === 'Enter') {
+      e.preventDefault();
       closeModals();
+      addNewGoal();
     }
   });
 }
