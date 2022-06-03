@@ -1,8 +1,6 @@
 import { goalListStorage } from './storage.js';
 import { renderGoalsFromStorage, renderActiveGoal } from './renderingUI.js';
 
-// const submitGoalBtn = document.querySelector('.submit-goal');
-// const newGoalForm = document.querySelector('[data-new-goal]');
 const goalInput = document.getElementById('goalTitle');
 
 export default function addNewGoal() {
@@ -14,6 +12,13 @@ export default function addNewGoal() {
   renderActiveGoal();
 }
 
-export function deleteGoal() {
+export function deleteGoal(deletedGoal) {
+  console.log(deletedGoal);
   console.log(goalListStorage);
+
+  const updatedGoalListStorage = goalListStorage.filter(
+    (goal) => goal != deletedGoal
+  );
+
+  goalListStorage = updatedGoalListStorage;
 }

@@ -1,4 +1,5 @@
 import { goalListStorage } from './storage.js';
+import { deleteGoal } from './appLogic.js';
 
 function clearElement(element) {
   while (element.firstChild) {
@@ -49,7 +50,22 @@ export function renderActiveGoal() {
   });
 }
 
+function renderDeleteGoal() {
+  const deleteButtons = document.querySelectorAll('.delete-btn');
+  // function updateStorage(deletedGoal) {
+  //
+  // }
+
+  deleteButtons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const deletedGoal = btn.parentElement.innerText;
+      deleteGoal(deletedGoal);
+    });
+  });
+}
+
 export default function renderUI() {
   renderGoalsFromStorage();
   renderActiveGoal();
+  renderDeleteGoal();
 }
