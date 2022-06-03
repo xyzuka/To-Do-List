@@ -52,14 +52,11 @@ export function renderActiveGoal() {
 
 function renderDeleteGoal() {
   const deleteButtons = document.querySelectorAll('.delete-btn');
-  // function updateStorage(deletedGoal) {
-  //
-  // }
-
   deleteButtons.forEach((btn) => {
     btn.addEventListener('click', () => {
       const deletedGoal = btn.parentElement.innerText;
-      deleteGoal(deletedGoal);
+      deleteGoal();
+      // deleteGoal(deletedGoal);
     });
   });
 }
