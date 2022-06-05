@@ -22,3 +22,7 @@ export function deleteGoal(deletedGoal) {
   renderGoalsFromStorage();
   renderActiveGoal();
 }
+
+// export function addNewToDo() {
+//   console.log('test');
+// }

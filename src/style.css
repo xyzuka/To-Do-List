@@ -13,9 +13,7 @@
   --black-text: #1C1917;
   --grey-text: #44403C;
   --checkbox-green: #66bb6a;
-  --high-priority: #DC2626;
-  --mid-priority: #EA580C;
-  --low-priority: #15803D;
+  --border: #DC2626;
   --font: 
     'Open Sans',
     ui-sans-serif,
@@ -177,7 +175,7 @@ footer {
 .edit-btn:hover,
 .submit-to-do:hover {
   cursor: pointer;
-  transform: scale(1.2);
+  transform: scale(1.1);
 }
 
 input[type="checkbox"] {
@@ -248,16 +246,8 @@ label::after {
   padding-left: 20px;
 }
 
-.low-priority {
-  border-left: var(--low-priority) 5px solid;
-}
-
-.mid-priority {
-  border-left: var(--mid-priority) 5px solid;
-}
-
-.high-priority {
-  border-left: var(--high-priority) 5px solid;
+.border {
+  border-left: var(--border) 5px solid;
 }
 
 .hide {
@@ -377,9 +367,7 @@ input {
 }
 
 .submit-to-do {
-  margin-top: 20px;
-  position: absolute;
-  bottom: 1.5rem;
-  right: 2rem;
+  width: 20%;
+  margin-top: 10px;
 }
 

@@ -1,4 +1,4 @@
-import addNewGoal from './appLogic.js';
+import { addNewGoal } from './appLogic.js';
 
 const show_goal_modal = document.querySelector('.set-goal-prompt');
 const show_to_do_modal = document.querySelector('.add-to-do-button');
@@ -50,7 +50,11 @@ export default function modalFeature() {
     addNewGoal();
   });
 
-  add_to_do_btn.addEventListener('click', closeModals);
+  add_to_do_btn.addEventListener('click', (e) => {
+    e.preventDefault();
+    closeModals();
+    addNewToDo();
+  });
 
   modal.addEventListener('keydown', function (e) {
     if (e.key === 'Enter') {
