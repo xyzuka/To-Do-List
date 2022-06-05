@@ -12,7 +12,7 @@ export function renderGoalsFromStorage() {
 
   clearElement(goalsContainer);
 
-  goalListStorage.forEach((goal) => {
+  goalListStorage.goals.forEach((goal) => {
     const markUpGoals = `
       <div class="goal" data-goal>
         <div class="goal-sign">
@@ -26,7 +26,7 @@ export function renderGoalsFromStorage() {
       </div>
     `;
 
-    goalsContainer.insertAdjacentHTML('afterbegin', markUpGoals);
+    goalsContainer.insertAdjacentHTML('beforeend', markUpGoals);
   });
 
   renderDeleteGoal();
