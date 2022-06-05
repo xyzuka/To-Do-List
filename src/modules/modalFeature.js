@@ -52,7 +52,7 @@ export default function modalFeature() {
 
   add_to_do_btn.addEventListener('click', closeModals);
 
-  document.addEventListener('keydown', function (e) {
+  modal.addEventListener('keydown', function (e) {
     if (e.key === 'Enter') {
       e.preventDefault();
       closeModals();

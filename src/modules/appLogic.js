@@ -1,5 +1,6 @@
 import { goalListStorage } from './storage.js';
 import { renderGoalsFromStorage, renderActiveGoal } from './renderingUI.js';
+import modalFeature from './modalFeature.js';
 
 const goalInput = document.getElementById('goalTitle');
 
@@ -16,7 +17,16 @@ export default function addNewGoal() {
 }
 
 export function deleteGoal(deletedGoal) {
-  console.log('test');
+  console.log(deletedGoal);
+
+  let updatedGoalListStorage = goalListStorage.filter(
+    (goal) => goal != deletedGoal
+  );
+
+  console.log(updatedGoalListStorage);
+
+  // goalListStorage = updatedGoalListStorage;
+
   // console.log(deletedGoal);
   // console.log(goalListStorage);
   // let updatedGoalListStorage = goalListStorage.filter(

@@ -147,11 +147,8 @@ footer {
   align-items: center;
 }
 
-.set-goal-text {
-  padding-left: 10px;
-}
-
-.button:hover {
+.button:hover,
+.goal:hover {
   cursor: pointer;
   font-weight: bold;
   background-color: var(--main-grey);
