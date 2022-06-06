@@ -175,7 +175,7 @@ footer {
 .edit-btn:hover,
 .submit-to-do:hover {
   cursor: pointer;
-  transform: scale(1.2);
+  transform: scale(1.1);
 }
 
 input[type="checkbox"] {

@@ -56,7 +56,6 @@ function renderDeleteGoal() {
     btn.addEventListener('click', () => {
       const deletedGoal = btn.parentElement.innerText;
       deleteGoal(deletedGoal);
-      // deleteGoal(deletedGoal);
     });
   });
 }
