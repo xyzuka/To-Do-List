@@ -57,8 +57,8 @@
           </div>
         </div>
         <div class="right-section">
-          <div>
-            <section class="to-do-item low-priority">
+          <div class="to-dos-container">
+            <!-- <section class="to-do-item low-priority">
               <div class="check-and-title">
                   <div class="circle">
                     <input type="checkbox" id="checkbox1" />
@@ -91,8 +91,8 @@
                 <path fill="currentColor" d="M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19M8,9H16V19H8V9M15.5,4L14.5,3H9.5L8.5,4H5V6H19V4H15.5Z" />
               </svg>
               </div>  
-            </section>
-            <section class="to-do-item high-priority">
+            </section> -->
+            <section class="to-do-item border">
               <div class="check-and-title">
                   <div class="circle">
                     <input type="checkbox" id="checkbox3" />
@@ -128,7 +128,7 @@
           </form>
         </div>
     </div>
-    <div class="add-to-do-modal modal hide">
+    <div class="add-to-do-modal modal">
       <button class="close-modal close-to-do-button">&times;</button>
         <div class="modal-content">
           <h2>New To Do</h2>
@@ -138,23 +138,13 @@
             </div>
             <p for="description">Description: </p>
             <textarea type="text" id="description" wrap="soft"></textarea>
-           <div class="priority-due-date-container">
-              <div class="priority-container">
-                <p for="priority">Priority:</p>
-                <select name="priority" id="priority">
-                  <option value="high-priority" selected>High Priority</option>
-                  <option value="mid-priority">Mid Priority</option>
-                  <option value="low-priority" >Low-Priority</option>
-                </select>
-              </div>
               <div class="due-date-container">
                 <p for="due-date">Due Date:</p>
                 <input type="date" id="due-date">
               </div>
-            </div>
+              <button class="submit-to-do">Add To Do</button>
           </div>
            
-            <button class="submit-to-do">Add To Do</button>
     </div>
     </div>
     <div class="overlay hide"></div>

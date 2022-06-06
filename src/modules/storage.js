@@ -12,10 +12,23 @@ export const goalListStorage = {
   goals: ['Personal', 'Coding', 'Fitness'],
 };
 
-// storageTest.add = 'Test';
-// console.log(storageTest.goalListStorage);
-// storageTest.delete = 'Fitness';
-// console.log(storageTest.goalListStorage);
+export let toDoStorage = [
+  {
+    title: 'Gym',
+    description: 'We go Jim',
+    dueDate: '22 June 2022',
+  },
+  {
+    title: 'Coding',
+    description: 'Complete To Do Project',
+    dueDate: '11 June 2022',
+  },
+];
 
-// storageTest.current = 'FA';
-// storageTest.current = 'TEST';
+export class toDoItem {
+  constructor(title, description, dueDate) {
+    this.title = title;
+    this.description = description;
+    this.dueDate = dueDate;
+  }
+}
