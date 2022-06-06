@@ -38,6 +38,11 @@ export function deleteGoal(deletedGoal) {
   renderActiveGoal();
 }
 
+export function deleteToDo(deletedToDo) {
+  toDoStorage.deleteToDo(deletedToDo);
+  renderToDosFromStorage();
+}
+
 export function addToDo() {
   const titleInput = document.getElementById('to-do-title');
   const descriptionInput = document.getElementById('description');

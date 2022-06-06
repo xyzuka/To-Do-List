@@ -1,5 +1,6 @@
 import { goalListStorage, toDoStorage } from './storage.js';
 import { deleteGoal } from './appLogic.js';
+import { deleteToDo } from './appLogic.js';
 
 function clearElement(element) {
   while (element.firstChild) {
@@ -65,8 +66,6 @@ export function renderToDosFromStorage() {
 
   clearElement(toDosContainer);
 
-  console.log(toDoStorage);
-
   for (const toDo of toDoStorage) {
     const toDoMarkUp = `
     <section class="to-do-item border">
@@ -82,7 +81,7 @@ export function renderToDosFromStorage() {
         <svg style="width:24px;height:24px" viewBox="0 0 24 24" class="button edit-btn">
           <path fill="currentColor" d="M10 20H6V4H13V9H18V12.1L20 10.1V8L14 2H6C4.9 2 4 2.9 4 4V20C4 21.1 4.9 22 6 22H10V20M20.2 13C20.3 13 20.5 13.1 20.6 13.2L21.9 14.5C22.1 14.7 22.1 15.1 21.9 15.3L20.9 16.3L18.8 14.2L19.8 13.2C19.9 13.1 20 13 20.2 13M20.2 16.9L14.1 23H12V20.9L18.1 14.8L20.2 16.9Z" />
           </svg>
-        <svg style="width:24px;height:24px" viewBox="0 0 24 24" class="button delete-btn">
+        <svg style="width:24px;height:24px" viewBox="0 0 24 24" class="button delete-btn" data-delete-to-do-btn>
           <path fill="currentColor" d="M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19M8,9H16V19H8V9M15.5,4L14.5,3H9.5L8.5,4H5V6H19V4H15.5Z" />
         </svg>
         </div>
@@ -91,6 +90,19 @@ export function renderToDosFromStorage() {
 
     toDosContainer.insertAdjacentHTML('beforeend', toDoMarkUp);
   }
+
+  renderDeleteToDo();
+}
+
+function renderDeleteToDo() {
+  const deleteToDoBtns = document.querySelectorAll('[data-delete-to-do-btn]');
+
+  deleteToDoBtns.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const deletedToDo = btn.parentElement.previousElementSibling.innerText;
+      deleteToDo(deletedToDo);
+    });
+  });
 }
 
 export default function renderUI() {
