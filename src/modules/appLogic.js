@@ -6,6 +6,7 @@ import {
   renderToDosFromStorage,
 } from './renderingUI.js';
 import modalFeature from './modalFeature.js';
+import * as dayjs from 'dayjs';
 
 const goalInput = document.getElementById('goalTitle');
 
@@ -38,13 +39,28 @@ export function deleteGoal(deletedGoal) {
 }
 
 export function addToDo() {
+  const titleInput = document.getElementById('to-do-title');
+  const descriptionInput = document.getElementById('description');
+  const dueDateInput = document.getElementById('due-date');
   const title = document.getElementById('to-do-title').value;
   const description = document.getElementById('description').value;
   const dueDate = document.getElementById('due-date').value;
+  const formattedDate = dayjs(dueDate).format(`D MMMM YYYY`);
 
-  const newToDo = new toDoItem(title, description, dueDate);
+  const newToDo = new toDoItem(title, description, formattedDate);
+
+  if (!title || title === '') return alert('Please fill in a title!');
+  if (!description || description === '')
+    return alert('Please fill in a description!');
+  if (!dueDate || dueDate === '') return alert('Please fill in a dueDate!');
 
   toDoStorage.push(newToDo);
+
+  titleInput.value = '';
+  descriptionInput.value = '';
+  dueDateInput.value = '';
+
+  // Send to local storage
 
   renderToDosFromStorage();
 }
