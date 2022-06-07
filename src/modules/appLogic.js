@@ -1,5 +1,6 @@
 import { goalListStorage, toDoStorage } from './storage.js';
 import { toDoItem } from './storage.js';
+import { updateToDoCheck } from './storage.js';
 import { updateToDoStorage } from './storage.js';
 import {
   renderGoalsFromStorage,
@@ -52,8 +53,9 @@ export function addToDo() {
   const description = document.getElementById('description').value;
   const dueDate = document.getElementById('due-date').value;
   const formattedDate = dayjs(dueDate).format(`D MMMM YYYY`);
+  const done = false;
 
-  const newToDo = new toDoItem(title, description, formattedDate);
+  const newToDo = new toDoItem(title, description, formattedDate, done);
 
   if (!title || title === '') return alert('Please fill in a title!');
   if (!description || description === '')
@@ -69,4 +71,8 @@ export function addToDo() {
   // Send to local storage
 
   renderToDosFromStorage();
+}
+
+export function updateToDoAsDone(btn) {
+  updateToDoCheck(btn);
 }

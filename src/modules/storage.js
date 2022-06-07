@@ -19,19 +19,22 @@ export let toDoStorage = [
     title: 'Gym',
     description: 'We go Jim',
     dueDate: '22 June 2022',
+    done: false,
   },
   {
     title: 'Coding',
     description: 'Complete To Do Project',
     dueDate: '11 June 2022',
+    done: false,
   },
 ];
 
 export class toDoItem {
-  constructor(title, description, dueDate) {
+  constructor(title, description, dueDate, done) {
     this.title = title;
     this.description = description;
     this.dueDate = dueDate;
+    this.done = done;
   }
 }
 
@@ -47,3 +50,16 @@ export const updateToDoStorage = function (deletedToDo) {
 
   toDoStorage = newToDoArray;
 };
+
+export function updateToDoCheck(btn) {
+  const toDoObjectTitle = btn.nextElementSibling.textContent;
+  const isToDoItemChecked = btn.checked;
+
+  let toDoObj = toDoStorage.find((object) => object.title === toDoObjectTitle);
+
+  if (isToDoItemChecked) {
+    toDoObj.done = true;
+  } else {
+    toDoObj.done = false;
+  }
+}
