@@ -146,6 +146,24 @@
           </div>
            
     </div>
+    <div class="edit-to-do-modal modal hide">
+      <button class="close-modal close-edit-modal">&times;</button>
+        <div class="modal-content">
+          <h2>Edit To Do</h2>
+            <div class="title-container">
+              <p for="to-do-title">Title:</p>
+              <input type="text" id="to-do-title"  data-edit-title>
+            </div>
+            <p for="description">Description: </p>
+            <textarea type="text" id="description" wrap="soft"  data-edit-description></textarea>
+              <div class="due-date-container">
+                <p for="due-date">Due Date:</p>
+                <input type="date" id="due-date" data-edit-due-date>
+              </div>
+              <button class="submit-to-do edit-to-do">Done</button>
+    </div>
+           
+    </div>
     </div>
     <div class="overlay hide"></div>
     <footer>

@@ -1,6 +1,8 @@
 import { goalListStorage, toDoStorage } from './storage.js';
 import { deleteGoal } from './appLogic.js';
 import { deleteToDo } from './appLogic.js';
+import { modalFeature } from './modalFeature.js';
+import { openEditModal } from './modalFeature.js';
 
 function clearElement(element) {
   while (element.firstChild) {
@@ -92,6 +94,7 @@ export function renderToDosFromStorage() {
   }
 
   renderDeleteToDo();
+  renderEditModal();
 }
 
 function renderDeleteToDo() {
@@ -101,6 +104,16 @@ function renderDeleteToDo() {
     btn.addEventListener('click', () => {
       const deletedToDo = btn.parentElement.previousElementSibling.innerText;
       deleteToDo(deletedToDo);
+    });
+  });
+}
+
+function renderEditModal() {
+  const editToDoBtns = document.querySelectorAll('.edit-btn');
+
+  editToDoBtns.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      openEditModal();
     });
   });
 }
