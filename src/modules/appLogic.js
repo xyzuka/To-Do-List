@@ -1,11 +1,11 @@
 import { goalListStorage, toDoStorage } from './storage.js';
 import { toDoItem } from './storage.js';
+import { updateToDoStorage } from './storage.js';
 import {
   renderGoalsFromStorage,
   renderActiveGoal,
   renderToDosFromStorage,
 } from './renderingUI.js';
-import modalFeature from './modalFeature.js';
 import * as dayjs from 'dayjs';
 
 const goalInput = document.getElementById('goalTitle');
@@ -39,7 +39,8 @@ export function deleteGoal(deletedGoal) {
 }
 
 export function deleteToDo(deletedToDo) {
-  toDoStorage.deleteToDo(deletedToDo);
+  // toDoStorage.deleteItem(deletedToDo);
+  updateToDoStorage(deletedToDo);
   renderToDosFromStorage();
 }
 

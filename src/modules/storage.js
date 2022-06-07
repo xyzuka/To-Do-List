@@ -1,5 +1,7 @@
 // export let goalListStorage = ['Fitness', 'Coding', 'Personal'];
 
+import { deleteToDo } from './appLogic';
+
 export const goalListStorage = {
   set add(name) {
     this.goals.push(name);
@@ -25,27 +27,6 @@ export let toDoStorage = [
   },
 ];
 
-toDoStorage.deleteToDo = function (deletedToDo) {
-  const findToDoObj = function (toDoObj) {
-    let obj = toDoStorage.find((o) => o.title === toDoObj);
-    return obj.title;
-  };
-
-  console.log(toDoStorage);
-
-  console.log(findToDoObj(deletedToDo));
-
-  const newToDoArray = toDoStorage.filter(
-    (toDoObj) => toDoObj.title != findToDoObj(deletedToDo)
-  );
-
-  console.log(newToDoArray);
-
-  toDoStorage = newToDoArray;
-
-  console.log(toDoStorage);
-};
-
 export class toDoItem {
   constructor(title, description, dueDate) {
     this.title = title;
@@ -53,3 +34,16 @@ export class toDoItem {
     this.dueDate = dueDate;
   }
 }
+
+export const updateToDoStorage = function (deletedToDo) {
+  const findToDoObj = function (toDoObj) {
+    let obj = toDoStorage.find((o) => o.title === toDoObj);
+    return obj.title;
+  };
+
+  const newToDoArray = toDoStorage.filter(
+    (toDoObj) => toDoObj.title != findToDoObj(deletedToDo)
+  );
+
+  toDoStorage = newToDoArray;
+};
