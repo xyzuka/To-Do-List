@@ -1,6 +1,13 @@
 // export let goalListStorage = ['Fitness', 'Coding', 'Personal'];
 
-import { deleteToDo } from './appLogic';
+import {
+  currentToDoTitle,
+  currentToDoDescription,
+  currentToDoDueDate,
+  updateToDoAsDone,
+} from './appLogic';
+import { renderToDosFromStorage } from './renderingUI';
+import * as dayjs from 'dayjs';
 
 export const goalListStorage = {
   set add(name) {
@@ -62,4 +69,26 @@ export function updateToDoCheck(btn) {
   } else {
     toDoObj.done = false;
   }
+}
+
+export function editToDoStorage() {
+  const editedToDoTitle = document.querySelector('[data-edit-title]').value;
+  const editedToDoDescription = document.querySelector(
+    '[data-edit-description]'
+  ).value;
+  const editedToDoDueDate = document.querySelector(
+    '[data-edit-due-date]'
+  ).value;
+  const formattedDate = dayjs(editedToDoDueDate).format(`D MMMM YYYY`);
+
+  // searching for specific object in storage
+  let toDoObjectSearch = toDoStorage.find((o) => o.title === currentToDoTitle);
+
+  // updating with new edited item
+  toDoObjectSearch.title = editedToDoTitle;
+  toDoObjectSearch.description = editedToDoDescription;
+  toDoObjectSearch.dueDate = formattedDate;
+
+  // render new edited to do
+  renderToDosFromStorage();
 }

@@ -1,5 +1,5 @@
 import { goalListStorage, toDoStorage } from './storage.js';
-import { deleteGoal } from './appLogic.js';
+import { deleteGoal, loadToDoInfo } from './appLogic.js';
 import { deleteToDo } from './appLogic.js';
 import { modalFeature } from './modalFeature.js';
 import { openEditModal } from './modalFeature.js';
@@ -43,8 +43,6 @@ export function renderToDosFromStorage() {
   clearElement(toDosContainer);
 
   for (const toDo of toDoStorage) {
-    console.log(toDo.done);
-
     let toDoMarkUp = `
     <section class="to-do-item border">
       <div class="check-and-title">
@@ -145,7 +143,6 @@ function renderEditContentFromStorage(btn) {
       .innerText;
 
   let toDoObj = toDoStorage.find((o) => o.title === toDoInnerText);
-  console.log(toDoObj);
 
   const toDoDueDateReformatted = dayjs(toDoObj.dueDate).format(`YYYY-MM-D`);
 
@@ -161,6 +158,7 @@ function renderEditModal() {
     btn.addEventListener('click', () => {
       openEditModal();
       renderEditContentFromStorage(btn);
+      loadToDoInfo();
     });
   });
 }

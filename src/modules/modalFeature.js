@@ -1,5 +1,6 @@
 import { addNewGoal } from './appLogic.js';
 import { addToDo } from './appLogic.js';
+import { editToDoStorage } from './storage.js';
 
 const show_goal_modal = document.querySelector('.set-goal-prompt');
 const show_to_do_modal = document.querySelector('.add-to-do-button');
@@ -71,8 +72,7 @@ export default function modalFeature() {
   edit_to_do_btn.addEventListener('click', (e) => {
     e.preventDefault();
     closeModals();
-    // editToDo();
-    console.log('test');
+    editToDoStorage();
   });
 
   to_do_modal.addEventListener('keydown', (e) => {
@@ -95,8 +95,7 @@ export default function modalFeature() {
     if (e.key === 'Enter') {
       e.preventDefault();
       closeModals();
-      // editToDo();
-      console.log('pressed enter');
+      editToDoStorage();
     }
   });
 }

@@ -1,5 +1,6 @@
 import { goalListStorage, toDoStorage } from './storage.js';
 import { toDoItem } from './storage.js';
+import { editToDoStorage } from './storage.js';
 import { updateToDoCheck } from './storage.js';
 import { updateToDoStorage } from './storage.js';
 import {
@@ -75,4 +76,25 @@ export function addToDo() {
 
 export function updateToDoAsDone(btn) {
   updateToDoCheck(btn);
+}
+
+export let currentToDoTitle;
+export let currentToDoDescription;
+export let currentToDoDueDate;
+
+export function loadToDoInfo() {
+  const toDoTitle = document.querySelector('[data-edit-title]').value;
+
+  // searching for specific object in storage to store old variables
+  let searchStorage = toDoStorage.find((o) => o.title === toDoTitle);
+
+  currentToDoTitle = searchStorage.title;
+  currentToDoDescription = searchStorage.description;
+  currentToDoDueDate = searchStorage.dueDate;
+
+  // searching for specific object in storage
+  let toDoObjectSearch = toDoStorage.find((o) => o.title === currentToDoTitle);
+
+  console.log(currentToDoTitle);
+  console.log(toDoObjectSearch);
 }
