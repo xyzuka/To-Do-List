@@ -4,6 +4,7 @@ import { deleteToDo } from './appLogic.js';
 import { modalFeature } from './modalFeature.js';
 import { openEditModal } from './modalFeature.js';
 import { updateToDoAsDone } from './appLogic.js';
+import dayjs from 'dayjs';
 
 function clearElement(element) {
   while (element.firstChild) {
@@ -34,34 +35,6 @@ export function renderGoalsFromStorage() {
   });
 
   renderDeleteGoal();
-}
-
-export function renderActiveGoal() {
-  const goals = document.querySelectorAll('[data-goal]');
-
-  function removeActiveGoals() {
-    goals.forEach((goal) => {
-      goal.classList.remove('active-goal');
-    });
-  }
-
-  goals.forEach((goal) => {
-    goal.addEventListener('click', () => {
-      removeActiveGoals();
-      goal.classList.add('active-goal');
-    });
-  });
-}
-
-function renderDeleteGoal() {
-  const deleteButtons = document.querySelectorAll('[data-delete-btn]');
-
-  deleteButtons.forEach((btn) => {
-    btn.addEventListener('click', () => {
-      const deletedGoal = btn.parentElement.innerText;
-      deleteGoal(deletedGoal);
-    });
-  });
 }
 
 export function renderToDosFromStorage() {
@@ -123,6 +96,34 @@ export function renderToDosFromStorage() {
   renderToDoAsDone();
 }
 
+export function renderActiveGoal() {
+  const goals = document.querySelectorAll('[data-goal]');
+
+  function removeActiveGoals() {
+    goals.forEach((goal) => {
+      goal.classList.remove('active-goal');
+    });
+  }
+
+  goals.forEach((goal) => {
+    goal.addEventListener('click', () => {
+      removeActiveGoals();
+      goal.classList.add('active-goal');
+    });
+  });
+}
+
+function renderDeleteGoal() {
+  const deleteButtons = document.querySelectorAll('[data-delete-btn]');
+
+  deleteButtons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const deletedGoal = btn.parentElement.innerText;
+      deleteGoal(deletedGoal);
+    });
+  });
+}
+
 function renderDeleteToDo() {
   const deleteToDoBtns = document.querySelectorAll('[data-delete-to-do-btn]');
 
@@ -134,12 +135,32 @@ function renderDeleteToDo() {
   });
 }
 
+function renderEditContentFromStorage(btn) {
+  const toDoTitle = document.querySelector('[data-edit-title]');
+  const toDoDescription = document.querySelector('[data-edit-description]');
+  const toDoDueDate = document.querySelector('[data-edit-due-date]');
+
+  const toDoInnerText =
+    btn.parentElement.firstElementChild.parentElement.previousElementSibling
+      .innerText;
+
+  let toDoObj = toDoStorage.find((o) => o.title === toDoInnerText);
+  console.log(toDoObj);
+
+  const toDoDueDateReformatted = dayjs(toDoObj.dueDate).format(`YYYY-MM-D`);
+
+  toDoTitle.value = toDoObj.title;
+  toDoDescription.value = toDoObj.description;
+  toDoDueDate.value = toDoDueDateReformatted;
+}
+
 function renderEditModal() {
   const editToDoBtns = document.querySelectorAll('.edit-btn');
 
   editToDoBtns.forEach((btn) => {
     btn.addEventListener('click', () => {
       openEditModal();
+      renderEditContentFromStorage(btn);
     });
   });
 }
