@@ -82,6 +82,7 @@ export let currentToDoTitle;
 export let currentToDoDescription;
 export let currentToDoDueDate;
 
+// Used to search for to do information to be used in editing
 export function loadToDoInfo() {
   const toDoTitle = document.querySelector('[data-edit-title]').value;
 
@@ -94,7 +95,4 @@ export function loadToDoInfo() {
 
   // searching for specific object in storage
   let toDoObjectSearch = toDoStorage.find((o) => o.title === currentToDoTitle);
-
-  console.log(currentToDoTitle);
-  console.log(toDoObjectSearch);
 }
