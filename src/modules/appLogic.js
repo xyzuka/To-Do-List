@@ -20,7 +20,6 @@ function checkDup(arr, val) {
 
 export function addNewGoal() {
   const goal = goalInput.value;
-  console.log(goal);
 
   if (!goal || goal === ' ') return alert('Please add a goal!');
 

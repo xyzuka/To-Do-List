@@ -6,17 +6,33 @@ import {
   currentToDoDueDate,
   updateToDoAsDone,
 } from './appLogic';
-import { renderToDosFromStorage } from './renderingUI';
+import { renderGoalsFromStorage, renderToDosFromStorage } from './renderingUI';
 import * as dayjs from 'dayjs';
+
+function updateLocalStorage() {
+  localStorage.setItem(
+    'goalListStorage',
+    JSON.stringify(goalListStorage.goals)
+  );
+}
+
+export default function loadLocalStorage() {
+  if (localStorage.goalListStorage) {
+    let goals = JSON.parse(localStorage.getItem('goalListStorage'));
+    goalListStorage.goals = goals;
+    renderGoalsFromStorage();
+  }
+}
 
 export const goalListStorage = {
   set add(name) {
     this.goals.push(name);
+    updateLocalStorage();
   },
   set delete(name) {
     const newGoalsArray = this.goals.filter((goal) => goal != name);
-    console.log(newGoalsArray);
     this.goals = newGoalsArray;
+    updateLocalStorage();
   },
   goals: ['Personal', 'Coding', 'Fitness'],
 };
