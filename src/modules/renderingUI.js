@@ -1,4 +1,4 @@
-import { goalListStorage, toDoStorage } from './storage.js';
+import { goalListStorage, toDoStorage, showToDosForGoal } from './storage.js';
 import {
   deleteGoal,
   deleteToDo,
@@ -37,6 +37,7 @@ export function renderGoalsFromStorage() {
   });
 
   renderDeleteGoal();
+  renderActiveGoal();
 }
 
 export function renderToDosFromStorage() {
@@ -102,13 +103,16 @@ export function renderActiveGoal() {
   function removeActiveGoals() {
     goals.forEach((goal) => {
       goal.classList.remove('active-goal');
+      goal.classList.remove('active-goal-focus');
     });
   }
 
   goals.forEach((goal) => {
     goal.addEventListener('click', () => {
       removeActiveGoals();
+      showToDosForGoal(goal);
       goal.classList.add('active-goal');
+      goal.classList.add('active-goal-focus');
     });
   });
 }
@@ -177,6 +181,5 @@ function renderToDoAsDone() {
 
 export default function renderUI() {
   renderGoalsFromStorage();
-  renderActiveGoal();
   renderToDosFromStorage();
 }

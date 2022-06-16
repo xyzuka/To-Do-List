@@ -152,6 +152,11 @@ footer {
   background-color: var(--main-grey);
 }
 
+.active-goal-focus {  
+  font-weight: bold;
+  background-color: var(--main-grey);
+}
+
 .task-btn:hover,
 .set-goal-text:hover {
   font-weight: bold;

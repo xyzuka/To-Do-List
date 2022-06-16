@@ -49,16 +49,28 @@ export const goalListStorage = {
 
 export let toDoStorage = [
   {
-    title: 'Gym',
-    description: 'We go Jim',
+    title: 'Max out testing',
+    description:
+      'Training block is almost over. Will need to take a week off the gym so I can to test my one rep maxes.',
     dueDate: '22 June 2022',
-    done: false,
+    done: true,
+    goal: 'Fitness',
   },
   {
-    title: 'Coding',
-    description: 'Complete To Do Project',
+    title: 'Coding my Project',
+    description:
+      'Complete To Do Project for the Odin Project. This is a tricky project since Webpack is pretty confusing!',
     dueDate: '11 June 2022',
     done: false,
+    goal: 'Coding',
+  },
+  {
+    title: 'Complete my taxes',
+    description:
+      'Taxes are due at the end of this month. Need to visit my Accountant to see if I can deduct this mechanical keyboard I purchased for coding...',
+    dueDate: '30 June 2022',
+    done: false,
+    goal: 'Personal',
   },
 ];
 
@@ -124,4 +136,8 @@ export function editToDoStorage() {
 
   // render new edited to do
   renderToDosFromStorage();
+}
+
+export function showToDosForGoal(goal) {
+  console.log(`showing to dos for the goal: ${goal.innerText}`);
 }
