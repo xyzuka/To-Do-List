@@ -3,6 +3,7 @@ import { toDoItem } from './storage.js';
 import { editToDoStorage } from './storage.js';
 import { updateToDoCheck } from './storage.js';
 import { updateToDoStorage } from './storage.js';
+import { updateLocalStorageToDos } from './storage.js';
 import {
   renderGoalsFromStorage,
   renderActiveGoal,
@@ -69,6 +70,7 @@ export function addToDo() {
   dueDateInput.value = '';
 
   // Send to local storage
+  updateLocalStorageToDos();
 
   renderToDosFromStorage();
 }

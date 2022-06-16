@@ -9,11 +9,15 @@ import {
 import { renderGoalsFromStorage, renderToDosFromStorage } from './renderingUI';
 import * as dayjs from 'dayjs';
 
-function updateLocalStorage() {
+function updateLocalStorageGoals() {
   localStorage.setItem(
     'goalListStorage',
     JSON.stringify(goalListStorage.goals)
   );
+}
+
+export function updateLocalStorageToDos() {
+  localStorage.setItem('toDoStorage', JSON.stringify(toDoStorage));
 }
 
 export default function loadLocalStorage() {
@@ -22,17 +26,23 @@ export default function loadLocalStorage() {
     goalListStorage.goals = goals;
     renderGoalsFromStorage();
   }
+
+  if (localStorage.toDoStorage) {
+    let toDos = JSON.parse(localStorage.getItem('toDoStorage'));
+    toDoStorage = toDos;
+    renderToDosFromStorage();
+  }
 }
 
 export const goalListStorage = {
   set add(name) {
     this.goals.push(name);
-    updateLocalStorage();
+    updateLocalStorageGoals();
   },
   set delete(name) {
     const newGoalsArray = this.goals.filter((goal) => goal != name);
     this.goals = newGoalsArray;
-    updateLocalStorage();
+    updateLocalStorageGoals();
   },
   goals: ['Personal', 'Coding', 'Fitness'],
 };
@@ -72,6 +82,8 @@ export const updateToDoStorage = function (deletedToDo) {
   );
 
   toDoStorage = newToDoArray;
+
+  updateLocalStorageToDos();
 };
 
 export function updateToDoCheck(btn) {
