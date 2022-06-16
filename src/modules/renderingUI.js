@@ -1,9 +1,11 @@
 import { goalListStorage, toDoStorage } from './storage.js';
-import { deleteGoal, loadToDoInfo } from './appLogic.js';
-import { deleteToDo } from './appLogic.js';
-import { modalFeature } from './modalFeature.js';
+import {
+  deleteGoal,
+  deleteToDo,
+  loadToDoInfo,
+  updateToDoAsDone,
+} from './appLogic.js';
 import { openEditModal } from './modalFeature.js';
-import { updateToDoAsDone } from './appLogic.js';
 import dayjs from 'dayjs';
 
 function clearElement(element) {

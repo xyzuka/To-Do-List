@@ -1,6 +1,5 @@
 import { goalListStorage, toDoStorage } from './storage.js';
 import { toDoItem } from './storage.js';
-import { editToDoStorage } from './storage.js';
 import { updateToDoCheck } from './storage.js';
 import { updateToDoStorage } from './storage.js';
 import { updateLocalStorageToDos } from './storage.js';

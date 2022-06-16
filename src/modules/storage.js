@@ -94,8 +94,10 @@ export function updateToDoCheck(btn) {
 
   if (isToDoItemChecked) {
     toDoObj.done = true;
+    updateLocalStorageToDos();
   } else {
     toDoObj.done = false;
+    updateLocalStorageToDos();
   }
 }
 
@@ -116,6 +118,9 @@ export function editToDoStorage() {
   toDoObjectSearch.title = editedToDoTitle;
   toDoObjectSearch.description = editedToDoDescription;
   toDoObjectSearch.dueDate = formattedDate;
+
+  // updating local storage
+  updateLocalStorageToDos();
 
   // render new edited to do
   renderToDosFromStorage();
