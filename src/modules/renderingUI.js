@@ -1,4 +1,9 @@
-import { goalListStorage, toDoStorage, showToDosForGoal } from './storage.js';
+import {
+  goalListStorage,
+  toDoStorage,
+  temporaryToDoStorage,
+  clearTempStorage,
+} from './storage.js';
 import {
   deleteGoal,
   deleteToDo,
@@ -97,14 +102,15 @@ export function renderToDosFromStorage() {
   renderToDoAsDone();
 }
 
-export function renderSpecificToDo(toDo) {
+export function renderSpecificToDo(specificToDo) {
   // console.log(`${toDo.goal} rendered`);
 
   const toDosContainer = document.querySelector('.to-dos-container');
 
   clearElement(toDosContainer);
 
-  let toDoMarkUp = `
+  specificToDo.forEach((toDo) => {
+    let toDoMarkUp = `
     <section class="to-do-item border">
       <div class="check-and-title">
         <div class="circle">
@@ -125,8 +131,8 @@ export function renderSpecificToDo(toDo) {
     </section>
   `;
 
-  if (toDo.done) {
-    toDoMarkUp = ` <section class="to-do-item border">
+    if (toDo.done) {
+      toDoMarkUp = ` <section class="to-do-item border">
       <div class="check-and-title">
         <div class="circle">
           <input class="checkbox" type="checkbox" id="checkbox-${toDo.title}" checked/>
@@ -145,13 +151,27 @@ export function renderSpecificToDo(toDo) {
         </div>
     </section>
       `;
-  }
+    }
 
-  toDosContainer.insertAdjacentHTML('beforeend', toDoMarkUp);
+    toDosContainer.insertAdjacentHTML('beforeend', toDoMarkUp);
+  });
 
   renderDeleteToDo();
   renderEditModal();
   renderToDoAsDone();
+}
+
+function showToDosForGoal(goal) {
+  clearTempStorage();
+  toDoStorage.forEach((toDo) => {
+    // filter through matching to dos
+    if (toDo.goal === goal.innerText) {
+      // push these to dos to the temporary array (always clear it before adding)
+      temporaryToDoStorage.push(toDo);
+      // render
+      renderSpecificToDo(temporaryToDoStorage);
+    }
+  });
 }
 
 export function renderActiveGoal() {

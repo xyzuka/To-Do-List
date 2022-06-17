@@ -77,7 +77,22 @@ export let toDoStorage = [
     done: false,
     goal: 'Personal',
   },
+  {
+    title: 'Deload',
+    description:
+      'Take a week off training since my body will be taxed from the max testing.',
+    dueDate: '27 June 2022',
+    done: false,
+    goal: 'Fitness',
+  },
 ];
+
+export let temporaryToDoStorage = [];
+
+export function clearTempStorage() {
+  let emptyTemp = [];
+  temporaryToDoStorage = emptyTemp;
+}
 
 export class toDoItem {
   constructor(title, description, dueDate, done) {
@@ -141,20 +156,4 @@ export function editToDoStorage() {
 
   // render new edited to do
   renderToDosFromStorage();
-}
-
-export function showToDosForGoal(goal) {
-  for (const toDo of toDoStorage) {
-    if (toDo.goal === goal.innerText) {
-      // render specific goal
-      console.log(toDo);
-      return renderSpecificToDo(toDo);
-    }
-
-    if (toDo.goal != goal.innerText) {
-      const toDosContainer = document.querySelector('.to-dos-container');
-      clearElement(toDosContainer);
-      console.log('you have no toDos for this goal');
-    }
-  }
 }
