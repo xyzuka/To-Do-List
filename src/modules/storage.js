@@ -6,7 +6,12 @@ import {
   currentToDoDueDate,
   updateToDoAsDone,
 } from './appLogic';
-import { renderGoalsFromStorage, renderToDosFromStorage } from './renderingUI';
+import {
+  renderGoalsFromStorage,
+  renderToDosFromStorage,
+  renderSpecificToDo,
+  clearElement,
+} from './renderingUI';
 import * as dayjs from 'dayjs';
 
 function updateLocalStorageGoals() {
@@ -139,5 +144,17 @@ export function editToDoStorage() {
 }
 
 export function showToDosForGoal(goal) {
-  console.log(`showing to dos for the goal: ${goal.innerText}`);
+  for (const toDo of toDoStorage) {
+    if (toDo.goal === goal.innerText) {
+      // render specific goal
+      console.log(toDo);
+      return renderSpecificToDo(toDo);
+    }
+
+    if (toDo.goal != goal.innerText) {
+      const toDosContainer = document.querySelector('.to-dos-container');
+      clearElement(toDosContainer);
+      console.log('you have no toDos for this goal');
+    }
+  }
 }
