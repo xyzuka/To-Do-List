@@ -95,11 +95,12 @@ export function clearTempStorage() {
 }
 
 export class toDoItem {
-  constructor(title, description, dueDate, done) {
+  constructor(title, description, dueDate, done, goal) {
     this.title = title;
     this.description = description;
     this.dueDate = dueDate;
     this.done = done;
+    this.goal = goal;
   }
 }
 

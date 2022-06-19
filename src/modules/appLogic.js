@@ -54,8 +54,33 @@ export function addToDo() {
   const dueDate = document.getElementById('due-date').value;
   const formattedDate = dayjs(dueDate).format(`D MMMM YYYY`);
   const done = false;
+  let goal = [];
 
-  const newToDo = new toDoItem(title, description, formattedDate, done);
+  // Sorting to dos based on goals: loop through the tabs and goals to see which one has the 'active-goal-focus' class
+  const taskBtns = document.querySelectorAll('.task-btn');
+  const goalBtns = document.querySelectorAll('[data-goal]');
+
+  taskBtns.forEach((btn) => {
+    if (btn.classList.contains('active-goal-focus')) {
+      goal = [];
+      return goal.push(btn.textContent);
+    }
+  });
+
+  goalBtns.forEach((btn) => {
+    if (btn.classList.contains('active-goal-focus')) {
+      goal = [];
+      return goal.push(btn.outerText);
+    }
+  });
+
+  const newToDo = new toDoItem(
+    title,
+    description,
+    formattedDate,
+    done,
+    goal[0]
+  );
 
   if (!title || title === '') return alert('Please fill in a title!');
   if (!description || description === '')

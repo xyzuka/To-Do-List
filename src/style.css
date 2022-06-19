@@ -103,6 +103,10 @@ footer {
   overflow: auto;
 }
 
+.to-dos-container {
+  overflow: auto;
+}
+
 .active-goal {
   font-weight: bold;
 }
@@ -296,7 +300,7 @@ label::after {
   padding: 1.75rem 3.5rem;
   margin: 5rem 2rem;
   width: 35%;
-  height: 41%;
+  height: 49%;
   border: none;
   background-color: var(--main-white);
   color: var(--black-text);
@@ -373,7 +377,9 @@ input {
 }
 
 .submit-to-do {
-  position: absolute;
-  bottom: 1.5rem;
+  margin-top: 10px;
+  width: 5rem;
 }
+
+
 

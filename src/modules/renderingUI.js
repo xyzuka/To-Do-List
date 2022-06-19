@@ -103,8 +103,6 @@ export function renderToDosFromStorage() {
 }
 
 export function renderSpecificToDo(specificToDo) {
-  // console.log(`${toDo.goal} rendered`);
-
   const toDosContainer = document.querySelector('.to-dos-container');
 
   clearElement(toDosContainer);
@@ -174,19 +172,28 @@ function showToDosForGoal(goal) {
   });
 }
 
+function removeActiveGoals() {
+  const goals = document.querySelectorAll('[data-goal]');
+  goals.forEach((goal) => {
+    goal.classList.remove('active-goal');
+    goal.classList.remove('active-goal-focus');
+  });
+}
+
+function removeActiveTasks() {
+  const taskBtns = document.querySelectorAll('.task-btn');
+  taskBtns.forEach((task) => {
+    task.classList.remove('active-goal-focus');
+    task.classList.remove('active-goal');
+  });
+}
+
 export function renderActiveGoal() {
   const goals = document.querySelectorAll('[data-goal]');
-
-  function removeActiveGoals() {
-    goals.forEach((goal) => {
-      goal.classList.remove('active-goal');
-      goal.classList.remove('active-goal-focus');
-    });
-  }
-
   goals.forEach((goal) => {
     goal.addEventListener('click', () => {
       removeActiveGoals();
+      removeActiveTasks();
       showToDosForGoal(goal);
       goal.classList.add('active-goal');
       goal.classList.add('active-goal-focus');
@@ -255,6 +262,39 @@ function renderToDoAsDone() {
     });
   });
 }
+
+const allTasksBtn = document.querySelector('[data-all-tasks-btn]');
+const todayBtn = document.querySelector('[data-today-tasks]');
+const thisWeekBtn = document.querySelector('[data-weekly-tasks]');
+const priorityBtn = document.querySelector('[data-priority-tasks]');
+
+allTasksBtn.addEventListener('click', () => {
+  renderToDosFromStorage();
+  removeActiveGoals();
+  removeActiveTasks();
+  allTasksBtn.classList.add('active-goal-focus');
+});
+
+todayBtn.addEventListener('click', () => {
+  ///*** render today's tasks
+  removeActiveGoals();
+  removeActiveTasks();
+  todayBtn.classList.add('active-goal-focus');
+});
+
+thisWeekBtn.addEventListener('click', () => {
+  ///*** render this week's tasks
+  removeActiveGoals();
+  removeActiveTasks();
+  thisWeekBtn.classList.add('active-goal-focus');
+});
+
+priorityBtn.addEventListener('click', () => {
+  ///*** render priority tasks
+  removeActiveGoals();
+  removeActiveTasks();
+  priorityBtn.classList.add('active-goal-focus');
+});
 
 export default function renderUI() {
   renderGoalsFromStorage();
