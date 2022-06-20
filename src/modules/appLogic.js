@@ -7,6 +7,7 @@ import {
   renderGoalsFromStorage,
   renderActiveGoal,
   renderToDosFromStorage,
+  showToDosForGoal,
 } from './renderingUI.js';
 import * as dayjs from 'dayjs';
 
@@ -96,7 +97,10 @@ export function addToDo() {
   // Send to local storage
   updateLocalStorageToDos();
 
-  renderToDosFromStorage();
+  // Render based on the goal selected
+  showToDosForGoal(goal[0]);
+
+  // renderToDosFromStorage();
 }
 
 export function updateToDoAsDone(btn) {

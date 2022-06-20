@@ -13,15 +13,28 @@ import {
 import { openEditModal } from './modalFeature.js';
 import dayjs from 'dayjs';
 
+var isBetween = require('dayjs/plugin/isBetween');
+dayjs.extend(isBetween);
+
 export function clearElement(element) {
   while (element.firstChild) {
     element.removeChild(element.firstChild);
   }
 }
 
-export function renderGoalsFromStorage() {
-  const goalsContainer = document.querySelector('.goals-container');
+const allTasksBtn = document.querySelector('[data-all-tasks-btn]');
+const todayBtn = document.querySelector('[data-today-tasks]');
+const thisWeekBtn = document.querySelector('[data-weekly-tasks]');
+const priorityBtn = document.querySelector('[data-priority-tasks]');
+const goalsContainer = document.querySelector('.goals-container');
+const addToDoBtnContainer = document.querySelector(
+  '.add-to-do-button-container'
+);
+const date = document.getElementById('date');
+const month = document.getElementById('month');
+const year = document.getElementById('year');
 
+export function renderGoalsFromStorage() {
   clearElement(goalsContainer);
 
   goalListStorage.goals.forEach((goal) => {
@@ -159,11 +172,13 @@ export function renderSpecificToDo(specificToDo) {
   renderToDoAsDone();
 }
 
-function showToDosForGoal(goal) {
+export function showToDosForGoal(goal) {
+  const toDosContainer = document.querySelector('.to-dos-container');
   clearTempStorage();
+  clearElement(toDosContainer);
   toDoStorage.forEach((toDo) => {
     // filter through matching to dos
-    if (toDo.goal === goal.innerText) {
+    if (toDo.goal === goal.innerText || toDo.goal === goal) {
       // push these to dos to the temporary array (always clear it before adding)
       temporaryToDoStorage.push(toDo);
       // render
@@ -263,37 +278,87 @@ function renderToDoAsDone() {
   });
 }
 
-const allTasksBtn = document.querySelector('[data-all-tasks-btn]');
-const todayBtn = document.querySelector('[data-today-tasks]');
-const thisWeekBtn = document.querySelector('[data-weekly-tasks]');
-const priorityBtn = document.querySelector('[data-priority-tasks]');
+function renderToDosForToday() {
+  const dateToday = `${date.textContent} ${month.textContent} ${year.textContent}`;
+
+  toDoStorage.forEach((toDo) => {
+    if (toDo.dueDate === dateToday) {
+      clearTempStorage();
+      temporaryToDoStorage.push(toDo);
+      renderSpecificToDo(temporaryToDoStorage);
+    }
+  });
+}
+
+function renderToDosForWeek() {
+  const today = new Date();
+
+  const nextWeek = new Date(
+    today.getFullYear(),
+    today.getMonth(),
+    today.getDate() + 7
+  );
+
+  const todayReformatted = dayjs(today).format(`D MMMM YYYY`);
+  const nextWeekReformatted = dayjs(nextWeek).format(`D MMMM YYYY`);
+
+  console.log(todayReformatted);
+  console.log(nextWeekReformatted);
+
+  // subtract 1 day off today and add 1 day for next week so theres some range
+  const todayAdjusted = dayjs(todayReformatted).subtract(1, 'day');
+  console.log(todayAdjusted);
+
+  const check = dayjs(todayReformatted).isBetween(
+    dayjs(todayReformatted),
+    dayjs(nextWeekReformatted)
+  );
+  console.log(check);
+}
+
+function hideAddToDoBtn() {
+  if (
+    todayBtn.classList.contains('active-goal-focus') ||
+    thisWeekBtn.classList.contains('active-goal-focus')
+  ) {
+    addToDoBtnContainer.classList.add('hide');
+  } else {
+    addToDoBtnContainer.classList.remove('hide');
+  }
+}
 
 allTasksBtn.addEventListener('click', () => {
+  allTasksBtn.classList.add('active-goal-focus');
+  hideAddToDoBtn();
   renderToDosFromStorage();
   removeActiveGoals();
   removeActiveTasks();
-  allTasksBtn.classList.add('active-goal-focus');
 });
 
 todayBtn.addEventListener('click', () => {
   ///*** render today's tasks
+  todayBtn.classList.add('active-goal-focus');
+  hideAddToDoBtn();
+  renderToDosForToday();
   removeActiveGoals();
   removeActiveTasks();
-  todayBtn.classList.add('active-goal-focus');
 });
 
 thisWeekBtn.addEventListener('click', () => {
   ///*** render this week's tasks
+  thisWeekBtn.classList.add('active-goal-focus');
+  hideAddToDoBtn();
+  renderToDosForWeek();
   removeActiveGoals();
   removeActiveTasks();
-  thisWeekBtn.classList.add('active-goal-focus');
 });
 
 priorityBtn.addEventListener('click', () => {
   ///*** render priority tasks
+  priorityBtn.classList.add('active-goal-focus');
+  hideAddToDoBtn();
   removeActiveGoals();
   removeActiveTasks();
-  priorityBtn.classList.add('active-goal-focus');
 });
 
 export default function renderUI() {

@@ -7,6 +7,31 @@ const dateEl = document.getElementById('date');
 const monthEl = document.getElementById('month');
 const yearEl = document.getElementById('year');
 
+const days = [
+  'Sunday',
+  'Monday',
+  'Tuesday',
+  'Wednesday',
+  'Thursday',
+  'Friday',
+  'Saturday',
+];
+
+const months = [
+  'January',
+  'February',
+  'March',
+  'April',
+  'May',
+  'June',
+  'July',
+  'August',
+  'September',
+  'October',
+  'November',
+  'December',
+];
+
 function timeFeature() {
   const currentTime = new Date();
 
@@ -23,32 +48,7 @@ function timeFeature() {
   amPmEl.textContent = amPm;
 }
 
-function dayFeature() {
-  const days = [
-    'Sunday',
-    'Monday',
-    'Tuesday',
-    'Wednesday',
-    'Thursday',
-    'Friday',
-    'Saturday',
-  ];
-
-  const months = [
-    'January',
-    'February',
-    'March',
-    'April',
-    'May',
-    'June',
-    'July',
-    'August',
-    'September',
-    'October',
-    'November',
-    'December',
-  ];
-
+export function dayFeature() {
   const day = new Date();
 
   let currentDay = days[day.getDay()];

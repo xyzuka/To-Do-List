@@ -57,7 +57,7 @@ export let toDoStorage = [
     title: 'Max out testing',
     description:
       'Training block is almost over. Will need to take a week off the gym so I can to test my one rep maxes.',
-    dueDate: '22 June 2022',
+    dueDate: '20 June 2022',
     done: true,
     goal: 'Fitness',
   },
@@ -65,7 +65,7 @@ export let toDoStorage = [
     title: 'Coding my Project',
     description:
       'Complete To Do Project for the Odin Project. This is a tricky project since Webpack is pretty confusing!',
-    dueDate: '11 June 2022',
+    dueDate: '30 June 2022',
     done: false,
     goal: 'Coding',
   },
@@ -81,7 +81,7 @@ export let toDoStorage = [
     title: 'Deload',
     description:
       'Take a week off training since my body will be taxed from the max testing.',
-    dueDate: '27 June 2022',
+    dueDate: '22 June 2022',
     done: false,
     goal: 'Fitness',
   },
