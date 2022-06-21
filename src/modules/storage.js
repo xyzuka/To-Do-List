@@ -11,6 +11,7 @@ import {
   renderToDosFromStorage,
   renderSpecificToDo,
   clearElement,
+  renderActiveTasks,
 } from './renderingUI';
 import * as dayjs from 'dayjs';
 
@@ -57,9 +58,10 @@ export let toDoStorage = [
     title: 'Max out testing',
     description:
       'Training block is almost over. Will need to take a week off the gym so I can to test my one rep maxes.',
-    dueDate: '20 June 2022',
+    dueDate: '21 June 2022',
     done: true,
     goal: 'Fitness',
+    priority: 'No',
   },
   {
     title: 'Coding my Project',
@@ -68,6 +70,7 @@ export let toDoStorage = [
     dueDate: '30 June 2022',
     done: false,
     goal: 'Coding',
+    priority: 'Yes',
   },
   {
     title: 'Complete my taxes',
@@ -76,6 +79,7 @@ export let toDoStorage = [
     dueDate: '30 June 2022',
     done: false,
     goal: 'Personal',
+    priority: 'Yes',
   },
   {
     title: 'Deload',
@@ -84,6 +88,7 @@ export let toDoStorage = [
     dueDate: '22 June 2022',
     done: false,
     goal: 'Fitness',
+    priority: 'No',
   },
 ];
 
@@ -95,12 +100,13 @@ export function clearTempStorage() {
 }
 
 export class toDoItem {
-  constructor(title, description, dueDate, done, goal) {
+  constructor(title, description, dueDate, done, goal, priority) {
     this.title = title;
     this.description = description;
     this.dueDate = dueDate;
     this.done = done;
     this.goal = goal;
+    this.priority = priority;
   }
 }
 
@@ -143,6 +149,7 @@ export function editToDoStorage() {
     '[data-edit-due-date]'
   ).value;
   const formattedDate = dayjs(editedToDoDueDate).format(`D MMMM YYYY`);
+  const allTasksBtn = document.querySelector('[data-all-tasks-btn]');
 
   // searching for specific object in storage
   let toDoObjectSearch = toDoStorage.find((o) => o.title === currentToDoTitle);
@@ -156,5 +163,7 @@ export function editToDoStorage() {
   updateLocalStorageToDos();
 
   // render new edited to do
+  renderActiveTasks(allTasksBtn);
+
   renderToDosFromStorage();
 }

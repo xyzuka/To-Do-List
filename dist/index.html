@@ -117,10 +117,19 @@
             </div>
             <p for="description">Description: </p>
             <textarea type="text" id="description" wrap="soft"></textarea>
+            <div class="date-priority-container">
               <div class="due-date-container">
                 <p for="due-date">Due Date:</p>
                 <input type="date" id="due-date">
               </div>
+              <div class="priority-container">
+                <p for="priority">Priority:</p>
+                <select id="priority" data-edit-priority>  
+                  <option value="Yes">Yes</option>
+                  <option value="No">No</option>
+                </select>
+              </div>
+            </div>
               <button class="submit-to-do">Add To Do</button>
           </div>
            
@@ -135,10 +144,19 @@
             </div>
             <p for="description">Description: </p>
             <textarea type="text" id="description" wrap="soft"  data-edit-description></textarea>
+            <div class="date-priority-container">
               <div class="due-date-container">
                 <p for="due-date">Due Date:</p>
                 <input type="date" id="due-date" data-edit-due-date>
               </div>
+              <div class="priority-container">
+                <p for="priority">Priority:</p>
+                <select id="priority" data-edit-priority>  
+                  <option value="Yes">Yes</option>
+                  <option value="No">No</option>
+                </select>
+              </div>
+            </div>
               <button class="submit-to-do edit-to-do">Done</button>
     </div>
            
