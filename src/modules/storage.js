@@ -58,7 +58,7 @@ export let toDoStorage = [
     title: 'Max out testing',
     description:
       'Training block is almost over. Will need to take a week off the gym so I can to test my one rep maxes.',
-    dueDate: '21 June 2022',
+    dueDate: '22 June 2022',
     done: true,
     goal: 'Fitness',
     priority: 'No',
@@ -149,6 +149,9 @@ export function editToDoStorage() {
     '[data-edit-due-date]'
   ).value;
   const formattedDate = dayjs(editedToDoDueDate).format(`D MMMM YYYY`);
+  const editedPriority = document.querySelector('[data-edit-priority]').value;
+  console.log(editedPriority);
+
   const allTasksBtn = document.querySelector('[data-all-tasks-btn]');
 
   // searching for specific object in storage

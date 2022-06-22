@@ -243,11 +243,29 @@ function renderDeleteToDo() {
   });
 }
 
+// function setPriorityValue(dropdown, value) {
+//   for (let i = 0; i < dropdown.options.length; i++) {
+//     if (dropdown.options[i].text === value) {
+//       dropdown.options[i].selected = true;
+//       return;
+//     }
+//   }
+// }
+
+function setSelectedIndex(s, v) {
+  for (let i = 0; i < s.options.length; i++) {
+    if (s.options[i].text == v) {
+      s.options[i].selected = true;
+      return;
+    }
+  }
+}
+
 function renderEditContentFromStorage(btn) {
   const toDoTitle = document.querySelector('[data-edit-title]');
   const toDoDescription = document.querySelector('[data-edit-description]');
   const toDoDueDate = document.querySelector('[data-edit-due-date]');
-  const toDoPriority = document.querySelector('[data-edit-priority]');
+  const priorityValue = document.querySelector('[data-edit-priority]');
 
   const toDoInnerText =
     btn.parentElement.firstElementChild.parentElement.previousElementSibling
@@ -260,7 +278,18 @@ function renderEditContentFromStorage(btn) {
   toDoTitle.value = toDoObj.title;
   toDoDescription.value = toDoObj.description;
   toDoDueDate.value = toDoDueDateReformatted;
-  toDoPriority.value = toDoObj.priority;
+
+  // console.log(toDoObj.priority);
+
+  if (toDoObj.priority === 'Yes') {
+    // setPriorityValue(priorityValue, 'Yes');
+    setSelectedIndex(priorityValue, 'Yes');
+    console.log('show yes');
+  } else {
+    // setPriorityValue(priorityValue, 'No');
+    setSelectedIndex(priorityValue, 'No');
+    console.log('should show no');
+  }
 }
 
 function renderEditModal() {
