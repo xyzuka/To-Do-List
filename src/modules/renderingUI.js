@@ -243,15 +243,6 @@ function renderDeleteToDo() {
   });
 }
 
-// function setPriorityValue(dropdown, value) {
-//   for (let i = 0; i < dropdown.options.length; i++) {
-//     if (dropdown.options[i].text === value) {
-//       dropdown.options[i].selected = true;
-//       return;
-//     }
-//   }
-// }
-
 function setSelectedIndex(s, v) {
   for (let i = 0; i < s.options.length; i++) {
     if (s.options[i].text == v) {
@@ -279,16 +270,10 @@ function renderEditContentFromStorage(btn) {
   toDoDescription.value = toDoObj.description;
   toDoDueDate.value = toDoDueDateReformatted;
 
-  // console.log(toDoObj.priority);
-
   if (toDoObj.priority === 'Yes') {
-    // setPriorityValue(priorityValue, 'Yes');
     setSelectedIndex(priorityValue, 'Yes');
-    console.log('show yes');
   } else {
-    // setPriorityValue(priorityValue, 'No');
     setSelectedIndex(priorityValue, 'No');
-    console.log('should show no');
   }
 }
 
@@ -365,8 +350,6 @@ function renderPriorities() {
   clearTempStorage();
 
   toDoStorage.forEach((toDo) => {
-    console.log(toDo.priority);
-
     if (toDo.priority === 'Yes') {
       temporaryToDoStorage.push(toDo);
       return renderSpecificToDo(temporaryToDoStorage);

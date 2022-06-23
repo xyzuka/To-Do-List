@@ -1,16 +1,9 @@
 // export let goalListStorage = ['Fitness', 'Coding', 'Personal'];
 
-import {
-  currentToDoTitle,
-  currentToDoDescription,
-  currentToDoDueDate,
-  updateToDoAsDone,
-} from './appLogic';
+import { currentToDoTitle } from './appLogic';
 import {
   renderGoalsFromStorage,
   renderToDosFromStorage,
-  renderSpecificToDo,
-  clearElement,
   renderActiveTasks,
 } from './renderingUI';
 import * as dayjs from 'dayjs';
@@ -150,8 +143,6 @@ export function editToDoStorage() {
   ).value;
   const formattedDate = dayjs(editedToDoDueDate).format(`D MMMM YYYY`);
   const editedPriority = document.querySelector('[data-edit-priority]').value;
-  console.log(editedPriority);
-
   const allTasksBtn = document.querySelector('[data-all-tasks-btn]');
 
   // searching for specific object in storage
@@ -161,12 +152,12 @@ export function editToDoStorage() {
   toDoObjectSearch.title = editedToDoTitle;
   toDoObjectSearch.description = editedToDoDescription;
   toDoObjectSearch.dueDate = formattedDate;
+  toDoObjectSearch.priority = editedPriority;
 
   // updating local storage
   updateLocalStorageToDos();
 
   // render new edited to do
   renderActiveTasks(allTasksBtn);
-
   renderToDosFromStorage();
 }

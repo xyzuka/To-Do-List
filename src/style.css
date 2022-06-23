@@ -34,6 +34,8 @@
 
 body {
   background-color: var(--bc-color);
+  overflow-y:hidden;
+  overflow-x: auto;
 }
 
 footer {

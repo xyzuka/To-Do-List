@@ -58,8 +58,6 @@ export function addToDo() {
   const done = false;
   let goal = [];
 
-  console.log(priority);
-
   // Sorting to dos based on goals: loop through the tabs and goals to see which one has the 'active-goal-focus' class
   const taskBtns = document.querySelectorAll('.task-btn');
   const goalBtns = document.querySelectorAll('[data-goal]');
@@ -103,9 +101,6 @@ export function addToDo() {
 
   // Render based on the goal selected
   showToDosForGoal(goal[0]);
-
-  // renderToDosFromStorage();
-  console.log(toDoStorage);
 }
 
 export function updateToDoAsDone(btn) {
@@ -115,6 +110,7 @@ export function updateToDoAsDone(btn) {
 export let currentToDoTitle;
 export let currentToDoDescription;
 export let currentToDoDueDate;
+export let currentPriority;
 
 // Used to search for to do information to be used in editing
 export function loadToDoInfo() {
@@ -126,6 +122,7 @@ export function loadToDoInfo() {
   currentToDoTitle = searchStorage.title;
   currentToDoDescription = searchStorage.description;
   currentToDoDueDate = searchStorage.dueDate;
+  currentPriority = searchStorage.priority;
 
   // searching for specific object in storage
   let toDoObjectSearch = toDoStorage.find((o) => o.title === currentToDoTitle);
